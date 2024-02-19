@@ -1,6 +1,15 @@
 import express from 'express';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
+dotenv.config();
+
 const app = express();
 
-app.listen(3000, () => {
-    console.log('Server is Running on port 3000 using nodemon. Nodemon is removed in production');
-})
+mongoose.connect(process.env.MONGO_URL).then( ()=> {
+    console.log('Connected to DB ok');
+}).catch((err)=>{
+    console.log(err);
+});
+app.listen(3000, ()=>{
+    console.log('Nodemon Server is running on port 3000, nodemon is removed in production')
+} );
