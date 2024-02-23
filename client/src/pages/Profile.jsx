@@ -1,13 +1,45 @@
+import { useSelector } from "react-redux";
 const Profile = () => {
+    const { currentUser } = useSelector((state) => state.user);
     return (
         <div className='p-3 max-w-lg mx-auto'>
-            <h2 className='text-3xl text-center font-semibold my-7'>Profile</h2>
-            <img
-                src='https://picsum.photos/200'
-                width={200}
-                alt='Profile Photo'
-                className='rounded-full'
-            />
+            <h1 className='text-3xl text-center font-semibold my-7'>Profile</h1>
+
+            <form className='flex flex-col gap-4'>
+                <img
+                    src={currentUser.avatar}
+                    width={200}
+                    alt='Profile'
+                    className='rounded-full h-24 w-24 object-cover cursor-pointer self-center mt-2'
+                />
+                <input
+                    type='text'
+                    placeholder='username'
+                    className='border p-3 rounded-lg'
+                    id='username'
+                />
+                <input
+                    type='text'
+                    placeholder='email'
+                    className='border p-3 rounded-lg'
+                    id='email'
+                />
+                <input
+                    type='password'
+                    placeholder='password'
+                    className='border p-3 rounded-lg'
+                    id='password'
+                />
+                <button className='bg-slate-700 text-white rounded-lg p-3 uppercase hover:opacity-85 disabled:opacity-70'>
+                    update
+                </button>
+            </form>
+            <div className='flex justify-between mt-5'>
+                <span className='text-red-700 cursor-pointer'>
+                    Delete Account
+                </span>
+                <span className='text-red-700 cursor-pointer'>Sign Out</span>
+            </div>
         </div>
     );
 };
