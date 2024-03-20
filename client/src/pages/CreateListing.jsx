@@ -281,7 +281,7 @@ const CreateListing = () => {
                                 type='number'
                                 id='regularPrice'
                                 min='50'
-                                max='1000000'
+                                max='100000000'
                                 required
                                 className='p-3 border border-gray-300'
                                 onChange={handleChange}
@@ -289,7 +289,9 @@ const CreateListing = () => {
                             />
                             <div className='flex flex-col items-center'>
                                 <p>Regular price</p>
-                                <span className='text-xs'>($ / month)</span>
+                                {formData.type === "rent" && (
+                                    <span className='text-xs'>($ / month)</span>
+                                )}
                             </div>
                         </div>
                         {formData.offer && (
@@ -298,7 +300,7 @@ const CreateListing = () => {
                                     type='number'
                                     id='discountPrice'
                                     min='0'
-                                    max='1000000'
+                                    max='100000000'
                                     required
                                     className='p-3 border border-gray-300'
                                     onChange={handleChange}
@@ -307,7 +309,11 @@ const CreateListing = () => {
 
                                 <div className='flex flex-col items-center'>
                                     <p>Discounted price</p>
-                                    <span className='text-xs'>($ / month)</span>
+                                    {formData.type === "rent" && (
+                                        <span className='text-xs'>
+                                            ($ / month)
+                                        </span>
+                                    )}
                                 </div>
                             </div>
                         )}
